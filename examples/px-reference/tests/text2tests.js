@@ -19,12 +19,12 @@ var basePackageUri = px.getPackageBaseFilePath();
 //var longText = textA + "\n" + textA + "\n" + textA;
 // "Hello!  How are you?";//
 // Use fontUrl to load from web
-var fontUrlStart = "https://px-apps.sys.comcast.net/pxscene-samples/examples/px-reference/fonts/";
-var XFinityMed = "XFINITYStandardTT-Medium.ttf";//"XFINITYSansTT-New-Med.ttf";
+var fontUrlStart = "http://www.pxscene.org/examples/px-reference/fonts/";
+var pacifico = "Pacifico.ttf";
 var DejaVu = "DejaVuSans.ttf";
 var DejaVuSerif = "DejaVuSerif.ttf";
-var XFinity = "XFINITYStandardTT-Light.ttf";//"XFINITYSansTT-New-Lgt.ttf";
-var XFinityBold = "XFINITYStandardTT-Bold.ttf";//"XFINITYSansTT-New-Bold.ttf";
+var DancingScriptReg = "DancingScript-Regular.ttf";
+var DancingScriptBold = "DancingScript-Bold.ttf";
 // Different text strings to test
 var longText = "Here is a collection of a bunch of randomness, like words, phrases, and sentences that isn't supposed to make any kind of sense whatsoever. I want to test capital AV next to each other here. In generating this, I'm listening to someone talking, trying to make sense of what they are saying, and at the same time dictating to myself what I am going to type along with actually typing it out, recognizing when I make mistakes, and correcting myself when I do.";
 var longText2 = "I don't think I'm doing a very good job listening to whoever it is that is doing the talking right now.  It probably would have been a lot easier to just copy and paste something from the net, but I'm a typist, not a person that hunts and pecks to find the appropriate key on the keyboard.  Though I do think I'm probably off of my 30 word per minute speed from way back when.  How much more text is appropriate?  Why do I use words like appropriate when I could just say will do instead?  These and other questions generally go on unanswered.  But looking at the output of this text, I realize that its simply not enough and that I need to add more text; which is making me wonder why I simply didn't copy and paste in the first place.  Ah, yes, the strange musings of a software engineer.";
@@ -36,14 +36,14 @@ root.w=800;
 
 // Use the font vars below to preload fonts so that they stay loaded. 
 
-var fontXfinityMed = scene.create({t:"fontResource",url:fontUrlStart+XFinityMed});
+var fontPacifico = scene.create({t:"fontResource",url:fontUrlStart+pacifico});
 var fontDejaVu = scene.create({t:"fontResource",url:fontUrlStart+DejaVu});
 var fontDejaVuSerif = scene.create({t:"fontResource",url:fontUrlStart+DejaVuSerif});
-var fontXFinity = scene.create({t:"fontResource",url:fontUrlStart+XFinity});
-var fontXFinityBold = scene.create({t:"fontResource",url:fontUrlStart+XFinityBold});
+var fontDancingScriptReg = scene.create({t:"fontResource",url:fontUrlStart+DancingScriptReg});
+var fontDancingScriptBold = scene.create({t:"fontResource",url:fontUrlStart+DancingScriptBold});
 
-fontXfinityMed.ready.then(function(f) {
-  console.log("Ready for fontXfinityMed font!");
+fontPacifico.ready.then(function(f) {
+  console.log("Ready for fontPacifico font!");
   var tmpMetrics = f.getFontMetrics(35);
  	console.log("height is "+tmpMetrics.height);
 	console.log("ascent is "+tmpMetrics.ascent);
@@ -94,7 +94,7 @@ var xStopPosStatus = scene.create({t:"text", parent:root, x:350, y:container.y+4
 var xStopPosHint = scene.create({t:"text", parent:root, x:465, y:container.y+480, textColor:0xFFDDFFFF, pixelSize:20,clip:false,text:"(use small L)"});
 var leadingStatus = scene.create({t:"text", parent:root, x:350, y:container.y+500, textColor:0xFFDDFFFF, pixelSize:20,clip:false,text:"leading=0"});
 var leadingHint = scene.create({t:"text", parent:root, x:465, y:container.y+500, textColor:0xFFDDFFFF, pixelSize:20,clip:false,text:"(use + -)"});
-var fontStatus = scene.create({t:"text", parent:root, x:350, y:container.y+520, textColor:0xFFDDFFFF, pixelSize:20,clip:false,text:"font="+XFinityMed+" (http)"});
+var fontStatus = scene.create({t:"text", parent:root, x:350, y:container.y+520, textColor:0xFFDDFFFF, pixelSize:20,clip:false,text:"font="+pacifico+" (http)"});
 var leading = 0;
 
 
@@ -104,7 +104,7 @@ var text2 = scene.create({t:"textBox", clip:true, parent:container, x:0, y:0, rx
    text2.textColor=0xFFDDFFFF;
    text2.pixelSize=20;
    text2.leading=0;
-   text2.fontUrl=fontUrlStart+XFinityMed;
+   text2.fontUrl=fontUrlStart+pacifico;
    text2.alignHorizontal=0;
    text2.alignVertical=0;
    text2.xStartPos=0;
@@ -362,16 +362,16 @@ scene.root.on("onChar", function(e) {
     }
   } 
   else if(e.charCode == 102) { // f for font
-    if(fontStatus.text == "font="+XFinityMed+" (http)") {
+    if(fontStatus.text == "font="+pacifico+" (http)") {
       setFont(fontDejaVu,"font="+DejaVu+" (http)");
      } else if(fontStatus.text == "font="+DejaVu+" (http)"){
-       setFont(fontXFinity, "font="+XFinity+" (http)");
-    } else if(fontStatus.text == "font="+XFinity+" (http)"){
+       setFont(fontDancingScriptReg, "font="+DancingScriptReg+" (http)");
+    } else if(fontStatus.text == "font="+DancingScriptReg+" (http)"){
       setFont(fontDejaVuSerif,"font="+DejaVuSerif+" (http)");
     } else if(fontStatus.text == "font="+DejaVuSerif+" (http)"){
-      setFont(fontXFinityBold,"font="+XFinityBold+" (http)");
-    } else if(fontStatus.text == "font="+XFinityBold+" (http)"){
-      setFont(fontXfinityMed,"font="+XFinityMed+" (http)");
+      setFont(fontDancingScriptBold,"font="+DancingScriptBold+" (http)");
+    } else if(fontStatus.text == "font="+DancingScriptBold+" (http)"){
+      setFont(fontPacifico,"font="+pacifico+" (http)");
     }
     var font = text2.font;
     font.ready.then(function(f){
@@ -408,28 +408,28 @@ var expectedTextDesc = [
 ];
 var expectedValuesMeasure = {
   // bounds.x1, bounds.y1, bounds.x2, bounds.y2, charFirst.x, charFirst.y, charLast.x, charLast.y
-  "shortTextNoWrapH0":[0,0,189,24,0,20,189,20], // shortTextNoWrapH0
-  "shortTextNoWrapH1":[105.5,0,294.5,24,105.5,20,294.5,20], // shortTextNoWrapH1
-  "shortTextNoWrapH2":[211,0,400,24,211,20,400,20], // shortTextNoWrapH2
-  "shortTextNoWrapH0V1":[0,188,189,212,0,208,189,208], // shortTextNoWrapH0V1
-  "shortTextNoWrapH0V2":[0,376,189,400,0,396,189,396], // shortTextNoWrapH0V2
-  "shortTextNoWrapH1V1":[105.5,188,294.5,212,105.5,208,294.5,208], //shortTextNoWrapH1V1
-  "shortTextNoWrapH1V2":[105.5,376,294.5,400,105.5,396,294.5,396], //shortTextNoWrapH1V2
-  "shortTextNoWrapH2V1":[211,188,400,212,211,208,400,208], //shortTextNoWrapH2V1
-  "shortTextNoWrapH2V2":[211,376,400,400,211,396,400,396], //shortTextNoWrapH2V2
-  "longestTextNoWrapNoTruncateNoClipH0V0":[0,0,2029,24,0,20,2029,20], //longestTextNoWrapNoTruncateNoClipH0V0
-  "longestTextNoWrapNoTruncateNoClipH1V0":[-803.5,0,1203.5,24,-803.5,20,1203.5,20], //longestTextNoWrapNoTruncateNoClipH1V0
-  "longestTextWrapNoTruncateNoClipH0V1":[0,-184,399,584,0,-164,87,580], //longestTextWrapNoTruncateNoClipH0V1
-  "longestTextWrapNoTruncateNoClipH0V2":[0,-368,399,400,0,-348,87,396], //longestTextWrapNoTruncateNoClipH0V2
-  "longestTextNoWrapNoTruncateNoClipH0V1":[0,188,2029,212,0,208,2029,208], //longestTextNoWrapNoTruncateNoClipH0V1
-  "longestTextNoWrapNoTruncateNoClipH0V2":[0,376,2029,400,0,396,2029,396], //longestTextNoWrapNoTruncateNoClipH0V2
-  "longestTextWrapTruncateNoClipH0V0":[0,0,399,384,0,20,398,380], //longestTextWrapNoTruncateNoClipH0V0
-  "longestTextWrapTruncateNoClipH0V1":[0,8,399,392,0,28,398,388], //longestTextWrapNoTruncateNoClipH0V1
-  "longestTextWrapTruncateNoClipH0V2":[0,16,399,400,0,36,398,396], //longestTextWrapTruncateNoClipH0V2
-  "longestTextWrapTruncateNoClipH1V0":[0.5,0,399.5,384,46,20,399,380], //longestTextWrapNoTruncateNoClipH0V0
-  "longestTextWrapTruncateNoClipH1V1":[0.5,8,399.5,392,46,28,399,388], //longestTextWrapNoTruncateNoClipH0V1
-  "longestTextWrapTruncateNoClipH1V2":[0.5,16,399.5,400,46,36,399,396], //longestTextWrapTruncateNoClipH1V2
-  "newlinesTextNoWrapTruncateClipH1V1":[118.5,164,281.5,236,151,184,275.5,232], //newlinesTextNoWrapTruncateClipH1V1
+  "shortTextNoWrapH0":[0,0,190,35,0,26,190,26], // shortTextNoWrapH0
+  "shortTextNoWrapH1":[105,0,295,35,105,26,295,26], // shortTextNoWrapH1
+  "shortTextNoWrapH2":[210,0,400,35,210,26,400,26], // shortTextNoWrapH2
+  "shortTextNoWrapH0V1":[0,182.5,190,217.5,0,208.5,190,208.5], // shortTextNoWrapH0V1
+  "shortTextNoWrapH0V2":[0,365,190,400,0,391,190,391], // shortTextNoWrapH0V2
+  "shortTextNoWrapH1V1":[105,182.5,295,217.5,105,208.5,295,208.5], //shortTextNoWrapH1V1
+  "shortTextNoWrapH1V2":[105,365,295,400,105,391,295,391], //shortTextNoWrapH1V2
+  "shortTextNoWrapH2V1":[210,182.5,400,217.5,210,208.5,400,208.5], //shortTextNoWrapH2V1
+  "shortTextNoWrapH2V2":[210,365,400,400,210,391,400,391], //shortTextNoWrapH2V2
+  "longestTextNoWrapNoTruncateNoClipH0V0":[0,0,2035,35,0,26,2035,26], //longestTextNoWrapNoTruncateNoClipH0V0
+  "longestTextNoWrapNoTruncateNoClipH1V0":[-809,0,1209,35,-809,26,1209,26], //longestTextNoWrapNoTruncateNoClipH1V0
+  "longestTextWrapNoTruncateNoClipH0V1":[0,-272.5,400,672.5,0,-246.5,146,663.5], //longestTextWrapNoTruncateNoClipH0V1
+  "longestTextWrapNoTruncateNoClipH0V2":[0,-545,400,400,0,-519,146,391], //longestTextWrapNoTruncateNoClipH0V2
+  "longestTextNoWrapNoTruncateNoClipH0V1":[0,182.5,2035,217.5,0,208.5,2035,208.5], //longestTextNoWrapNoTruncateNoClipH0V1
+  "longestTextNoWrapNoTruncateNoClipH0V2":[0,365,2035,400,0,391,2035,391], //longestTextNoWrapNoTruncateNoClipH0V2
+  "longestTextWrapTruncateNoClipH0V0":[0,0,400,385,0,26,399,376], //longestTextWrapNoTruncateNoClipH0V0
+  "longestTextWrapTruncateNoClipH0V1":[0,7.5,400,392.5,0,33.5,399,383.5], //longestTextWrapNoTruncateNoClipH0V1
+  "longestTextWrapTruncateNoClipH0V2":[0,15,400,400,0,41,399,391], //longestTextWrapTruncateNoClipH0V2
+  "longestTextWrapTruncateNoClipH1V0":[16.5,0,400,385,16,26,399.5,376], //longestTextWrapNoTruncateNoClipH0V0
+  "longestTextWrapTruncateNoClipH1V1":[16.5,7.5,400,392.5,16,33.5,399.5,383.5], //longestTextWrapNoTruncateNoClipH0V1
+  "longestTextWrapTruncateNoClipH1V2":[16.5,15,400,400,16,41,399.5,391], //longestTextWrapTruncateNoClipH1V2
+  "newlinesTextNoWrapTruncateClipH1V1":[118.5,264.5,281.5,236,151,184,275.5,232], //newlinesTextNoWrapTruncateClipH1V1
 };
 
 var textMeasurementResults = function(values) {
@@ -447,7 +447,7 @@ var beforeStart = function() {
 
     // Setup all properties as assumed for start of tests
     // set to short text, wordWrap=false, pixelSize, hAlign=left 
-    setFont(fontXfinityMed,"font="+XFinityMed+" (http)");
+    setFont(fontPacifico,"font="+pacifico+" (http)");
     if( text2.wordWrap) {
       toggleWordWrap();
     }
