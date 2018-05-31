@@ -22,8 +22,10 @@ px.import({
         var req = moduleFn(url);
         if (req) {
           req.abort();
+          console.log(">>>>>>>>>>>>>>>valid req" + allow);
           resolve(allow ? "SUCCESS" : "FAILURE");
         } else {
+          console.log(">>>>>>>>>>>>>>>invalid valid req" + allow);
           resolve(allow ? "FAILURE" : "SUCCESS");
         }
       });
