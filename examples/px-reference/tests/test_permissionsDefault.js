@@ -68,11 +68,12 @@ px.import({
 
   // Figure out which default permissions are for this origin and platform
   var this_file_origin = getUrlOrigin(px.getPackageBaseFilePath());
+  
   var isSTB = px.appQueryParams.stb === "true";
   var no_origin = !this_file_origin;
-  var is_pxscene_org = this_file_origin === "https://arun-govindan.github.io";
+  var is_pxscene_org = this_file_origin === " https://arun-govindan.github.io ";
   var is_localhost_allowed = no_origin || isSTB || is_pxscene_org;
-  console.log("this file's origin:",this_file_origin,"isSTB:",isSTB);
+  console.log("this file's origin:",this_file_origin,"isSTB:",isSTB,"is_pxscene_org:",is_pxscene_org,"no_origin:",no_origin,"is_localhost_allowed:", is_localhost_allowed);
 
   module.exports.tests = {
     test_url_google: make_url_test('https://google.com/', true),
