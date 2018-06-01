@@ -70,7 +70,7 @@ px.import({
   var this_file_origin = getUrlOrigin(px.getPackageBaseFilePath());
   var isSTB = px.appQueryParams.stb === "true";
   var no_origin = !this_file_origin;
-  var is_pxscene_org = this_file_origin === "https://www.pxscene.org";
+  var is_pxscene_org = this_file_origin === "https://arun-govindan.github.io";
   var is_localhost_allowed = no_origin || isSTB || is_pxscene_org;
   console.log("this file's origin:",this_file_origin,"isSTB:",isSTB);
 
