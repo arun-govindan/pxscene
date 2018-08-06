@@ -97,7 +97,7 @@ px.import({
   var path = px.getPackageBaseFilePath();
   if (typeof path === 'string') {
     var urlObject = imports.url.parse(path);
-    no_origin = !urlObject.host;
+    no_origin = urlObject.host;
   }
 
   module.exports.tests = {
