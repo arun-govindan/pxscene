@@ -99,7 +99,7 @@ px.import({
     var urlObject = imports.url.parse(path);
     no_origin = urlObject.host;
   }
-
+console.log ("-------------- no_origin : " + no_origin + "urlObject.host : " + urlObject.host);
   module.exports.tests = {
     test_origin: make_url_test('https://server.test-cors.org/server?id=6577145&enable=true&status=200&credentials=false', true),
     test_anonymous: make_url_test('https://server.test-cors.org/server?id=67633&enable=true&status=200&credentials=false&response_headers=Access-Control-Allow-Origin%3A%20*', true),
